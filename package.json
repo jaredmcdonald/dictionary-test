@@ -1,0 +1,21 @@
+{
+  "name": "dictionary-test",
+  "version": "0.0.0",
+  "description": "Test run for grabbing words from dictionary APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaredmcdonald/dictionary-test.git"
+  },
+  "keywords": [
+    "dictionary"
+  ],
+  "author": "Jared McDonald <jared.r.mcdonald@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/jaredmcdonald/dictionary-test/issues"
+  }
+}
