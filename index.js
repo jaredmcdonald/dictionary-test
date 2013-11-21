@@ -17,7 +17,7 @@ api.getWord = function(word, callback, context) {
     options = {
       host: 'www.dictionaryapi.com',
       port: 80,
-      path: '/api/v1/references/collegiate/xml/' + word + '?key=62003798-387a-4ed6-a397-b4a6acb020e3'
+      path: '/api/v1/references/collegiate/xml/' + word + '{KEY HERE}'
     };
   http.get(options, function(res) {
     res.on('data', function(xml){
