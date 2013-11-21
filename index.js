@@ -1,25 +1,31 @@
-var http = require('http');
+var http = require('http'),
+  xml2js = require('xml2js');
+  parser = new xml2js.Parser(),
+  api = {};
 
-var api = {};
+// private function that passes json to callback function
+var parseString = function(xml, callback, context){
+  parser.parseString(xml.toString(), function(err, result) {
+    if (err) console.log(err);
+    callback.call(context, result);
+  });
+};
 
-api.getWord = function(word) {
-
-    var options = {
+api.getWord = function(word, callback, context) {
+  var cb = callback || function(){},
+    ctx = context || this,
+    options = {
       host: 'www.dictionaryapi.com',
       port: 80,
       path: '/api/v1/references/collegiate/xml/' + word + '?key=62003798-387a-4ed6-a397-b4a6acb020e3'
     };
-
-    http.get(options, function(res) {
-      console.log("Got response: " + res.statusCode);
-
-      res.on("data", function(chunk) {
-        console.log("BODY: " + chunk);
-      });
-    }).on('error', function(e) {
-      console.log("Got error: " + e.message);
+  http.get(options, function(res) {
+    res.on('data', function(xml){
+      parseString(xml, cb, ctx);
     });
-
+  }).on('error', function(e) {
+    console.log('error: ' + e.message);
+  });
 };
 
 module.exports = api;
