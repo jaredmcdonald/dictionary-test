@@ -19,6 +19,7 @@
     "url": "https://github.com/jaredmcdonald/dictionary-test/issues"
   },
   "dependencies": {
-    "xml2js": "~0.2.8"
+    "xml2js": "~0.2.8",
+    "request": "~2.34.0"
   }
 }
